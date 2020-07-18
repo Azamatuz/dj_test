@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ user | capfirst }} </h1>
+<h2>Menu Item Detail Page</h2>
+<h5>Title: {{ object.title }}</h5>
+<h6>Price: ${{ object.price }}</h6>
+
+{% endblock content %}
