@@ -14,8 +14,11 @@ class MenuItemModelForm(forms.ModelForm):
         fields = ['title', 'description', 'price']
 
     def clean_title(self, *args, **kwargs):
+        instance = self.instance
         title = self.cleaned_data.get('title')
-        qs = MenuItem.objects.filter(title=title)
+        qs = MenuItem.objects.filter(title__iexact=title)
+        if instance is not None:
+            qs = qs.exclude(pk=instance.pk)
         if qs.exists():
             raise forms.ValidationError('This prodact is already exist. Please, choose another product title')
         return title

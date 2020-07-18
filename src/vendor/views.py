@@ -13,6 +13,7 @@ def menu_item_list_view(request):
     context = {'object_list': qs}
     return render(request, template_name, context)
 
+#@login_required(login_url='/signin')
 @login_required
 def menu_item_create_view(request):
     form = MenuItemModelForm(request.POST or None)
@@ -23,9 +24,10 @@ def menu_item_create_view(request):
         obj.slug = str(obj.user) + '_' + form.cleaned_data.get('title') 
         obj.save()
         form = MenuItemModelForm()
-    template_name = 'menu/item_create.html'
+    template_name = 'menu/form.html'
     context = {'form':form}
     return render(request, template_name, context)
+
 
 def menu_item_detail_view(request, slug):
     obj = get_object_or_404(MenuItem, slug=slug)
@@ -33,14 +35,21 @@ def menu_item_detail_view(request, slug):
     context = {'object': obj}
     return render(request, template_name, context)
 
+@login_required
 def menu_item_update_view(request, slug):
     obj = get_object_or_404(MenuItem, slug=slug)
-    template_name = 'menu/item_update.html'
-    context = {'object': obj, 'form':None}
+    form = MenuItemModelForm(request.POST or None, instance=obj)
+    if form.is_valid():
+        form.save()
+    template_name = 'menu/form.html'
+    context = {'title':f'Update {obj.title}','form': form}
     return render(request, template_name, context)
 
+@login_required
 def menu_item_delete_view(request, slug):
     obj = get_object_or_404(MenuItem, slug=slug)
     template_name = 'menu/item_delete.html'
-    context = {'object': obj,'form':None}
+    if request.method == 'POST':
+        obj.delete()
+    context = {'object': obj}
     return render(request, template_name, context)
