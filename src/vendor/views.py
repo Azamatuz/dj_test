@@ -1,5 +1,8 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import render, get_object_or_404
 
+from.forms import MenuItemModelForm
 from .models import MenuItem
 
 
@@ -10,9 +13,18 @@ def menu_item_list_view(request):
     context = {'object_list': qs}
     return render(request, template_name, context)
 
+@login_required
 def menu_item_create_view(request):
+    form = MenuItemModelForm(request.POST or None)
+    if form.is_valid():
+        print(form.cleaned_data)
+        obj = form.save(commit=False)
+        obj.user = request.user
+        obj.slug = str(obj.user) + '_' + form.cleaned_data.get('title') 
+        obj.save()
+        form = MenuItemModelForm()
     template_name = 'menu/item_create.html'
-    context = {'form':None}
+    context = {'form':form}
     return render(request, template_name, context)
 
 def menu_item_detail_view(request, slug):

@@ -1,6 +1,17 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+
+
 
 {% block content %}
 <h1>Create new Menu Item</h1>
+{% if title %}
+    <h1>{{ title }}</h1>
+{% endif %}
 
-{% endblock content %}
+<form method='POST' action='.' enctype='multipart/form-data'> {% csrf_token %}
+    {{ form.as_p }}
+    <button class="mx-4 px-4 btn btn-light rounded-pill"  type='submit'>Add Item</button>
+</form> 
+
+
+{% endblock %}
