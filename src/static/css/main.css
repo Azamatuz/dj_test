@@ -1,0 +1,53 @@
+body {
+    font-family: Open Sans, sans-serif;
+}
+.text-blue {
+    color: #5ABBA6;
+}
+.jumbotron {
+    height: 400px;
+    background: white;
+    background-size: 80%; 
+    background-repeat: no-repeat;
+    background-position: right;
+    background-image: linear-gradient(88.8deg, #FFFFFF, rgba(229, 229, 229, 0) 60%),
+                        url("/static/img/header.png");
+}
+.btn {
+    background-color: #5ABBA6;
+    color: white;
+}
+.card-body {
+    background-color:#F2F2F2;
+}
+.card-bg {
+    background-color:#F2F2F2;
+}
+
+.card-horizontal {
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+
+.fas {
+    color: #5ABBA6;
+}
+
+.input_form {
+    height: 2rem !important;
+}

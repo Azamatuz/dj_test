@@ -9,3 +9,15 @@ class MenuItem(models.Model): #menuitem_set -> queryset
     slug = models.SlugField(unique=True)
     description = models.TextField(null=True, blank=True)
     price = models.IntegerField()
+
+    def get_absolute_url(self):
+        return f"/menu/{self.slug}"
+
+    def get_edit_url(self):
+        return f"{self.get_absolute_url()}/edit"
+    
+    def get_delete_url(self):
+        return f"{self.get_absolute_url()}/delete"
+    
+    def get_create_url(self):
+        return "/menu-new/"

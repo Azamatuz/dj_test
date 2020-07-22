@@ -1,14 +1,39 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<ul>
-    
-        {% for object in object_list %}
-           <li > <h5>{{ object.title }}</h5></li>
-        {% endfor %}
 
-    
-   
-  </ul>
+
+
+<h1>{{user}}</h1>
+<a class="btn btn-lg rounded-pill float-right mb-5" href=" /menu-new/" role="button">Add New Menu Item</a>
+<table class="table text-left">
+   <thead class="thead-light">
+      <tr class='d-flex'>
+         <th class="col-3">Title</th>
+         <th class="col-2">Price</th>
+         <th class="col-4">Description</th>
+         <th class="col-1"></th>
+         <th class="col-1"></th>
+         <th class="col-1"></th>
+      </tr>
+   </thead>
+   {% for object in object_list %}
+   <tbody>
+      <tr class='d-flex'>
+         <td class="col-3">{{ object.title }}</td>
+         <td class="col-2">${{ object.price }}</td>
+         <td class="col-4">{{ object.description|linebreaks|truncatewords:10 }}</td>
+         <td class="col-1"><a  href="{{ object.get_absolute_url }}" role="button">Detials</a> </td>
+         <td class="col-1"><a href="{{ object.get_edit_url }}" role="button">Edit</a></td>
+         <td class="col-1"> <a href="{{ object.get_delete_url }}" role="button">Delete</a></td>
+      </tr>
+   </tbody>
+   {% endfor %}
+
+</table>
+
+
+
+
 
 {% endblock content %}

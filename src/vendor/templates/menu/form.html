@@ -1,17 +1,25 @@
 {% extends "base.html" %}
 
-
+{% load crispy_forms_tags %}
 
 {% block content %}
-<h1>Create new Menu Item</h1>
-{% if title %}
-    <h1>{{ title }}</h1>
-{% endif %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
 
-<form method='POST' action='.' enctype='multipart/form-data'> {% csrf_token %}
-    {{ form.as_p }}
-    <button class="mx-4 px-4 btn btn-light rounded-pill"  type='submit'>Add Item</button>
-</form> 
+
+            <form method='POST'> {% csrf_token %}
+                <div class="form-row">
+                {{ form|crispy}}
+
+</div>
+                <button class="mx-4 px-4 btn btn-light rounded-pill" type='submit'>Submit</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+
 
 
 {% endblock %}

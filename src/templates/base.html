@@ -1,21 +1,49 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="Aigerim Tashmatova and Azamat Uzbekov">
 
-    <title>{% block head_title %}{% endblock %} FunRaise</title>
-  </head>
-  <body>
-     <div class='container-fluid'>
-         {% block content %}
-            {% endblock %}
+  <title>FunRaise</title>
+
+  <!-- Bootstrap core CSS -->
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+  <!-- Custom styles for this template -->
+  <link href={% static "css/main.css" %} rel="stylesheet">
+
+  <!-- Scrollbar Custom CSS -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+  <!-- Custom fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400,700&display=swap" rel="stylesheet">
+  <!-- Font Awesome Kit-->
+  <script src="https://kit.fontawesome.com/c1e426349d.js" crossorigin="anonymous"></script>
+
+<body>
+
+  {% if request.user.is_authenticated %}
+    {% include 'short_navbar.html' %} 
+    {% else %}
+      {% include 'main_navbar.html' %}
+  {% endif %}
+  {% comment %}  {% endcomment %}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col col-md-10 mx-auto">
+        {% block content %}
+        {% endblock %}
+      </div>
     </div>
+  </div>
+  {% include 'js.html' %}
+</body>
 
-    {% include 'js.html' %}
-  </body>
 </html>

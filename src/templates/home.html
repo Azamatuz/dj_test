@@ -2,118 +2,108 @@
 {% load static %}
 {% block content %}
 
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white">
-    <h5 class="my-0 mr-lg-auto font-weight-normal text-blue">LetsFunRaise</h5>
-    <nav class="my-2 my-lg-0 mr-lg-auto">
-      <a class="p-3 text-dark" href="#">Home</a>
-      <a class="p-3 text-dark" href="#">School coordinators</a>
-      <a class="p-3 text-dark" href="#">Students/Parents</a>
-      <a class="p-3 text-dark" href="#">Vendors</a>
-    </nav>
-    <a class="mx-4 px-4 btn btn-light rounded-pill" href="#">Sign in</a>
+
+<section id="header ">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container my-lg-5">
+      <h1 class="font-weight-bold">Order hot lunches <br>
+        easy & simple for everyone</h1>
+      <p class="lead">Sign Up. Order. Fundraise.</p>
+
+      <p class="lead">
+        <a class="px-lg-5 btn btn-lg rounded-pill" href="/accounts/signup/" role="button">Get Started</a>
+      </p>
+    </div>
   </div>
+</section>
 
-  <section id="header ">
-    <div class="jumbotron jumbotron-fluid">
-      <div class="container my-lg-5">
-        <h1 class="font-weight-bold">Order hot lunches <br>
-          easy & simple for everyone</h1>
-        <p class="lead">Sign Up. Order. Fundraise.</p>
-
-        <p class="lead">
-          <a class="px-lg-5 btn btn-lg rounded-pill" href="" role="button">Get Started</a>
-        </p>
+<section id="getstarted">
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-lg-6 d-flex align-items-stretch">
+        <div class="card border border-white m-3">
+          <img class="card-img-top" src="{% static 'img/parents.png' %}" alt="Card image cap">
+          <div class="card-body p-lg-5">
+            <h4 class="card-title font-weight-bold">For parents</h4>
+            <h6 class="card-text">Order your lunch with your kid and see how it is exciting proccess it is.</h6>
+            <a href="#" class="btn btn-lg rounded-pill px-lg-5 my-lg-3">Get started</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 d-flex align-items-stretch">
+        <div class="card border border-white m-3">
+          <img class="card-img-top" src="{% static 'img/school.png' %}" alt="Card image cap">
+          <div class="card-body p-lg-5">
+            <h4 class="card-title font-weight-bold">For school admin</h4>
+            <h6 class="card-text">Lets FunRaise with us! Build new playground for students!</h6>
+            <a href="#" class="btn btn-lg rounded-pill px-lg-5 my-lg-3">Get started</a>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
 
-  <section id="getstarted">
-    <div class="container my-5">
+
+    <div class="card border border-white m-3 card-bg">
       <div class="row">
-        <div class="col-lg-6 d-flex align-items-stretch">
-          <div class="card border border-white m-3">
-            <img class="card-img-top" src="{% static 'img/parents.png' %}" alt="Card image cap">
-            <div class="card-body p-lg-5">
-              <h4 class="card-title font-weight-bold">For parents</h4>
-              <h6 class="card-text">Order your lunch with your kid and see how it is exciting proccess it is.</h6>
-              <a href="#" class="btn btn-lg rounded-pill px-lg-5 my-lg-3">Get started</a>
-            </div>
+        <div class="col-lg-5">
+          <img src="{% static 'img/vendor.png' %}" class="w-100">
+        </div>
+        <div class="col-lg-7">
+          <div class="card-body p-lg-5">
+            <h4 class="card-title font-weight-bold">For vendors</h4>
+            <h6 class="card-text">1. Sign up <br> 2. Setup<br>
+              3. Earn</h6>
+            <a href="#" class="btn btn-lg rounded-pill px-lg-5 my-lg-3">Get started</a>
           </div>
         </div>
-        <div class="col-lg-6 d-flex align-items-stretch">
-          <div class="card border border-white m-3">
-            <img class="card-img-top" src="{% static 'img/school.png' %}" alt="Card image cap">
-            <div class="card-body p-lg-5">
-              <h4 class="card-title font-weight-bold">For school admin</h4>
-              <h6 class="card-text">Lets FunRaise with us! Build new playground for students!</h6>
-              <a href="#" class="btn btn-lg rounded-pill px-lg-5 my-lg-3">Get started</a>
-            </div>
-          </div>
-        </div>
+
+
       </div>
-
-
-      <div class="card border border-white m-3 card-bg">
-        <div class="row">
-          <div class="col-lg-5">
-            <img src="{% static 'img/vendor.png' %}" class="w-100">
-          </div>
-          <div class="col-lg-7">
-            <div class="card-body p-lg-5">
-              <h4 class="card-title font-weight-bold">For vendors</h4>
-              <h6 class="card-text">1. Sign up <br> 2. Setup<br>
-                3. Earn</h6>
-              <a href="#" class="btn btn-lg rounded-pill px-lg-5 my-lg-3">Get started</a>
-            </div>
-          </div>
-
-
-        </div>
-      </div>
-
     </div>
-  </section>
-  <section id="contactus">
-    <div class="container py-lg-5 font-weight-bold">
-      <h1 class="font-weight-bold text-center">Contact us</h1>
-      <div class="row my-lg-5 justify-content-between">
-        <div class="col-lg-5 pr-lg-4">
-          <h5 class="font-weight-bold">Got a question? We have got answer!</h5>
-          <form>
-            <div class="form-group">
-              <label for="InputEmail1">Email</label>
-              <input type="email" class="form-control p-4" id="exampleInputEmail1" aria-describedby="emailHelp"
-                height="60" placeholder="name@email.com">
-            </div>
-            <div class="form-group">
-              <label for="InputName">Name</label>
-              <input type="text" class="form-control p-4" id="exampleInputName" height="60" placeholder="Your name">
-            </div>
-            <div class="form-group">
-              <label for="ImputMessage">Message</label>
-              <textarea class="form-control p-4" name="" id="ImputMessage" rows="4"
-                placeholder="Type here your text"></textarea>
-            </div>
-            <button type="submit" class="btn btn-block rounded-pill">Submit</button>
-          </form>
-        </div>
-        <div class="col-lg-5 pr-lg-4">
-          <h5 class="font-weight-bold">We lwould love to see you!</h5>
-          <address class="font-italic">
 
-            <p>Call, email or come to visit us! <br> </p>
-            <p>+1 800 Letsfunraise <br> </p>
-            <p>info@mylunch.ca <br> </p>
-            <p>120 2nd Ave, Saskatoon, SK, Canada <br></p>
-          </address>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4897.622541548482!2d-106.62591622301635!3d52.13775448724148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5304f6a4ad311519%3A0x420813d125cfbbde!2sInnovation%20Place!5e0!3m2!1sen!2sca!4v1574715731256!5m2!1sen!2sca"
-            width="400" height="300" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
-        </div>
+  </div>
+</section>
+<section id="contactus">
+  <div class="container py-lg-5 font-weight-bold">
+    <h1 class="font-weight-bold text-center">Contact us</h1>
+    <div class="row my-lg-5 justify-content-between">
+      <div class="col-lg-5 pr-lg-4">
+        <h5 class="font-weight-bold">Got a question? We have got answer!</h5>
+        <form>
+          <div class="form-group">
+            <label for="InputEmail1">Email</label>
+            <input type="email" class="form-control p-4" id="exampleInputEmail1" aria-describedby="emailHelp"
+              height="60" placeholder="name@email.com">
+          </div>
+          <div class="form-group">
+            <label for="InputName">Name</label>
+            <input type="text" class="form-control p-4" id="exampleInputName" height="60" placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label for="ImputMessage">Message</label>
+            <textarea class="form-control p-4" name="" id="ImputMessage" rows="4"
+              placeholder="Type here your text"></textarea>
+          </div>
+          <button type="submit" class="btn btn-block rounded-pill">Submit</button>
+        </form>
       </div>
+      <div class="col-lg-5 pr-lg-4">
+        <h5 class="font-weight-bold">We lwould love to see you!</h5>
+        <address class="font-italic">
 
-
+          <p>Call, email or come to visit us! <br> </p>
+          <p>+1 800 Letsfunraise <br> </p>
+          <p>info@mylunch.ca <br> </p>
+          <p>120 2nd Ave, Saskatoon, SK, Canada <br></p>
+        </address>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4897.622541548482!2d-106.62591622301635!3d52.13775448724148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5304f6a4ad311519%3A0x420813d125cfbbde!2sInnovation%20Place!5e0!3m2!1sen!2sca!4v1574715731256!5m2!1sen!2sca"
+          width="400" height="300" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+      </div>
     </div>
-  </section>
-    
+
+
+  </div>
+</section>
+
 {% endblock %}
