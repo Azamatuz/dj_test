@@ -9,7 +9,7 @@ from .froms import UserAdminChangeForm, UserAdminCreationForm
 # Register your models here.
 User = get_user_model()
 
-class UserAdmin(admin.ModelAdmin):
+class UserAdmin(BaseUserAdmin):
 
     form = UserAdminChangeForm
     add_form = UserAdminCreationForm
