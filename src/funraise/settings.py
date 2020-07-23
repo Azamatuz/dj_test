@@ -40,8 +40,12 @@ INSTALLED_APPS = [
 
     'crispy_forms',
 
+
+    'accounts',
     'vendor',
 ]
+
+AUTH_USER_MODEL = 'accounts.User' #changes built-in user model to custom
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -52,6 +56,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+LOGOUT_REDIRECT_URL = '/login/'
 
 ROOT_URLCONF = 'funraise.urls'
 
@@ -129,6 +135,9 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 # Custom Django auth settings
+
+# Custom Django auth settings
+
 
 
 
