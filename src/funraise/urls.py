@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth.views import LogoutView
+from django.contrib.auth import views as auth_views
+from django.views.generic import TemplateView
 
+from accounts.views import LoginView, RegisterView
 from vendor.views import(
     menu_item_create_view,
 )
@@ -25,6 +29,9 @@ from .views import home_page
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_page),
+
+    path('accounts/login/', auth_views.LoginView.as_view()),
+
 
     path('menu-new/', menu_item_create_view),
     path('menu/', include('vendor.urls')),
