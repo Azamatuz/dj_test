@@ -19,7 +19,12 @@ from django.contrib.auth.views import LogoutView
 from django.contrib.auth import views as auth_views
 from django.views.generic import TemplateView
 
-from accounts.views import LoginView, RegisterView
+from accounts.views import (
+    LoginView, RegisterView, 
+    SignUpView, ParentSignUpView, 
+    SchoolSignUpView, 
+    VendorSignUpView
+)
 from vendor.views import(
     menu_item_create_view,
 )
@@ -28,10 +33,14 @@ from .views import home_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home_page),
-
+    path('', home_page, name='home'),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/login/', auth_views.LoginView.as_view()),
-
+    path('accounts/register/', SignUpView.as_view(), name='register'),
+    
+    path('accounts/register/parent/', ParentSignUpView.as_view(), name='parent_signup'),
+    path('accounts/register/school/', SchoolSignUpView.as_view(), name='school_signup'),
+    path('accounts/register/vendor/', VendorSignUpView.as_view(), name='vendor_signup'),
 
     path('menu-new/', menu_item_create_view),
     path('menu/', include('vendor.urls')),

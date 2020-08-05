@@ -69,9 +69,9 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser):
     email       = models.EmailField(max_length=255, unique=True)
     active      = models.BooleanField(default=True) # can login 
-    parent       = models.BooleanField(default=False) # parent user
-    school       = models.BooleanField(default=False) # school admin user
-    vendor       = models.BooleanField(default=False) # vendor user  
+    parent      = models.BooleanField(default=False) # parent user
+    school      = models.BooleanField(default=False) # school admin user
+    vendor      = models.BooleanField(default=False) # vendor user  
     staff       = models.BooleanField(default=False) # staff user non superuser
     admin       = models.BooleanField(default=False) # superuser 
     timestamp   = models.DateTimeField(auto_now_add=True)
@@ -105,7 +105,7 @@ class User(AbstractBaseUser):
         
     @property
     def is_vendor(self):
-        return self.vendor
+        return self.is_vendor
 
     @property
     def is_active(self):

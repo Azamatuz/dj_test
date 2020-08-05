@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Sign up for a free account</h2>
+  <p class="lead">Select below the type of account you want to create</p>
+    <a href="{% url 'parent_signup' %}" class="btn btn-lg" role="button">I'm a parent</a> 
+    <a href="{% url 'school_signup' %}" class="btn btn-lg" role="button">I'm a school admin</a> 
+    <a href="{% url 'vendor_signup' %}" class="btn btn-lg" role="button">I'm a vendor</a> 
+{% endblock %}
