@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     'accounts',
     'vendor',
+    'school'
 ]
 
 AUTH_USER_MODEL = 'accounts.User' #changes built-in user model to custom
