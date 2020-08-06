@@ -20,10 +20,17 @@ from django.contrib.auth import views as auth_views
 from django.views.generic import TemplateView
 
 from accounts.views import (
+  
     LoginView, RegisterView, 
     SignUpView, ParentSignUpView, 
     SchoolSignUpView, 
-    VendorSignUpView
+    VendorSignUpView,
+
+    profile_view,
+)
+
+from school.views import(
+    event_item_create_view,
 )
 from vendor.views import(
     menu_item_create_view,
@@ -35,6 +42,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_page, name='home'),
     path('accounts/', include('django.contrib.auth.urls')),
+    
+	path('accounts/profile/', TemplateView.as_view(template_name='accounts/profile.html'), name='profile'),
+
     path('accounts/login/', auth_views.LoginView.as_view()),
     path('accounts/register/', SignUpView.as_view(), name='register'),
     
@@ -44,5 +54,8 @@ urlpatterns = [
 
     path('menu-new/', menu_item_create_view),
     path('menu/', include('vendor.urls')),
+
+    path('event-new/', event_item_create_view),
+    path('event/', include('school.urls')),
 
 ]

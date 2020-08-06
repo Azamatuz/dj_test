@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<h1>{{user}}</h1>
+<a class="btn btn-lg rounded-pill float-right mb-5" href=" /event-new/" role="button">Add New Event</a>
+<table class="table text-left">
+   <thead class="thead-light">
+      <tr class='d-flex'>
+         <th class="col-2">Title</th>
+         <th class="col-2">Date</th>
+         <th class="col-3">Description</th>
+         <th class="col-2">Vendor</th>
+         <th class="col-1"></th>
+         <th class="col-1"></th>
+         <th class="col-1"></th>
+      </tr>
+   </thead>
+   {% for object in object_list %}
+   <tbody>
+      <tr class='d-flex'>
+         <td class="col-2">{{ object.title }}</td>
+         <td class="col-2">${{ object.date }}</td>
+         <td class="col-3">{{ object.description|linebreaks|truncatewords:10 }}</td>
+         <td class="col-2">{{ object.vendor.title }}</td>
+         <td class="col-1"><a  href="{{ object.get_absolute_url }}" role="button">Detials</a> </td>
+         <td class="col-1"><a href="{{ object.get_edit_url }}" role="button">Edit</a></td>
+         <td class="col-1"> <a href="{{ object.get_delete_url }}" role="button">Delete</a></td>
+      </tr>
+   </tbody>
+   {% endfor %}
+
+</table>
+
+
+
+
+
+{% endblock content %}

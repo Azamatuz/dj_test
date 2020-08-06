@@ -76,3 +76,15 @@ class RegisterView(CreateView):
     form_class = RegisterForm
     template_name = 'accounts/register.html'
     success_url = '/login/'
+
+#class ProfileView(CreateView):
+ #   template_name = 'accounts/profile.html'
+
+def profile_view(request, pk):
+    user = User.objects.get(pk=pk)
+    user_form = UserProfileForm(instance=user)
+    return render(request, 'accounts/profile.html', {"user":user})
+    
+
+
+
