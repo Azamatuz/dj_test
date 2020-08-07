@@ -8,7 +8,7 @@ from django.utils.http import is_safe_url
 
 from accounts.forms import LoginForm, RegisterForm
 
-from .forms import ParentSignUpForm, SchoolSignUpForm, VendorSignUpForm
+#from .forms import ParentSignUpForm, SchoolSignUpForm, VendorSignUpForm
 from .models import User
 
 
@@ -54,28 +54,28 @@ def home(request):
     return render(request, '/home.html')
 
 
-class ParentSignUpView(CreateView):
-    model = User
-    form_class = ParentSignUpForm
-    template_name = 'registration/signup_form.html'
-    success_url = 'accounts/login/'
+# class ParentSignUpView(CreateView):
+#     model = User
+#     form_class = ParentSignUpForm
+#     template_name = 'registration/signup_form.html'
+#     success_url = 'accounts/login/'
 
-class SchoolSignUpView(CreateView):
-    model = User
-    form_class = SchoolSignUpForm
-    template_name = 'registration/signup_form.html' 
-    success_url = '/login/'
+# class SchoolSignUpView(CreateView):
+#     model = User
+#     form_class = SchoolSignUpForm
+#     template_name = 'registration/signup_form.html' 
+#     success_url = '/login/'
 
-class VendorSignUpView(CreateView):
-    model = User
-    form_class = VendorSignUpForm
-    template_name = 'registration/signup_form.html'
-    success_url = '/login/'
+# class VendorSignUpView(CreateView):
+#     model = User
+#     form_class = VendorSignUpForm
+#     template_name = 'registration/signup_form.html'
+#     success_url = '/login/'
 
 class RegisterView(CreateView):
     form_class = RegisterForm
     template_name = 'accounts/register.html'
-    success_url = '/login/'
+    success_url = '/accounts/login/'
 
 #class ProfileView(CreateView):
  #   template_name = 'accounts/profile.html'

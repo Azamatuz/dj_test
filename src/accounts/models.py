@@ -11,6 +11,12 @@ class UserManager(BaseUserManager):
             raise ValueError("Users must have an email address")
         if not password:
             raise ValueError("Users must have a password")
+        if not parent:
+            raise ValueError("Users must have a role")
+        if not school:
+            raise ValueError("Users must have a role")
+        if not vendor:
+            raise ValueError("Users must have a role")
 
         user_obj = self.model(
             email = self.normalize_email(email)
@@ -25,41 +31,56 @@ class UserManager(BaseUserManager):
         user_obj.save(using=self._db)
         return user_obj
 
-    def create_parentuser(self, email, password=None):
+    def create_parentuser(self, parent, school, vendor, email, password=None):
         user = self.create_user(
                 email,
+                parent,
+                school,
+                vendor,
                 password=password,
                 is_parent=True
         )
         return user
 
-    def create_schooluser(self, email, password=None):
+    def create_schooluser(self, email, parent, school, vendor, password=None):
         user = self.create_user(
                 email,
+                parent,
+                school,
+                vendor,
                 password=password,
                 is_school=True
         )
         return user
 
-    def create_vendoruser(self, email, password=None):
+    def create_vendoruser(self, email, parent, school, vendor, password=None):
         user = self.create_user(
                 email,
+                parent,
+                school,
+                vendor,
                 password=password,
                 is_vendor=True
         )
         return user
 
-    def create_staffuser(self, email, password=None):
+    def create_staffuser(self, parent, school, vendor, email, password=None):
         user = self.create_user(
                 email,
+                parent,
+                school,
+                vendor,
                 password=password,
                 is_staff=True
         )
         return user
 
-    def create_superuser(self, email, password=None):
+    def create_superuser(self, parent, school, vendor, email, password=None):
         user = self.create_user(
                 email,
+                parent,
+                school,
+                vendor,
                 password=password,
                 is_staff=True,
                 is_admin=True,
@@ -76,7 +97,9 @@ class User(AbstractBaseUser):
     admin       = models.BooleanField(default=False) # superuser 
     timestamp   = models.DateTimeField(auto_now_add=True)
     
-    USERNAME_FIELD = 'email' #username
+    USERNAME_FIELD = 'email'#username
+
+    REQUIRED_FIELDS = ['parent', 'school', 'vendor' ]
 
     objects = UserManager()
 
