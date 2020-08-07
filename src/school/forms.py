@@ -5,7 +5,13 @@ from .models import EventItem, Vendor
 class EventItemForm(forms.Form):
     title = forms.CharField()
     slug = forms.SlugField()
-    date = forms.DateTimeField()
+    date = forms.DateTimeField(
+        input_formats=['%d/%m/%Y %H:%M'],
+        widget=forms.DateTimeInput(attrs={
+            'class': 'form-control datetimepicker-input',
+            'data-target': '#datetimepicker1'
+        })
+    )
     description = forms.CharField(widget=forms.Textarea(attrs={'rows': 2, 'cols': 25}))
     vendor = forms.CharField()
 

@@ -4,8 +4,11 @@ from django.shortcuts import render, get_object_or_404, redirect
 
 from.forms import EventItemModelForm
 from .models import EventItem
+from .decorators import user_is_event_author
 
+from vendor.models import MenuItem
 
+@login_required
 def event_item_list_view(request):
     qs = EventItem.objects.filter(user=request.user)
     template_name = 'event/event_list.html'
@@ -14,6 +17,7 @@ def event_item_list_view(request):
 
 #@login_required(login_url='/signin')
 @login_required
+
 def event_item_create_view(request):
     form = EventItemModelForm(request.POST or None)
     if form.is_valid():
@@ -36,6 +40,7 @@ def event_item_detail_view(request, slug):
     return render(request, template_name, context)
 
 @login_required
+@user_is_event_author
 def event_item_update_view(request, slug):
     obj = get_object_or_404(EventItem, slug=slug)
     form = EventItemModelForm(request.POST or None, instance=obj)
@@ -47,6 +52,7 @@ def event_item_update_view(request, slug):
     return render(request, template_name, context)
 
 @login_required
+@user_is_event_author
 def event_item_delete_view(request, slug):
     obj = get_object_or_404(EventItem, slug=slug)
     template_name = 'event/event_delete.html'
@@ -54,4 +60,11 @@ def event_item_delete_view(request, slug):
         obj.delete()
         return redirect('/event')
     context = {'object': obj}
+    return render(request, template_name, context)
+
+
+def user_menu_item_list_view():
+    qs = MenuItem.objects.filter(user=request.user)
+    template_name = 'event/event_list.html'
+    context = {'object_list': qs}
     return render(request, template_name, context)
