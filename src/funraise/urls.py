@@ -30,6 +30,8 @@ from accounts.views import (
     profile_view,
 )
 
+from carts.views import cart_detail_api_view
+
 from school.views import(
     event_item_create_view,
 )
@@ -48,6 +50,9 @@ urlpatterns = [
 
     path('accounts/login/', auth_views.LoginView.as_view()),
     path('accounts/register/', RegisterView.as_view(), name='register'),
+
+    path('api/cart/', cart_detail_api_view, name='api-cart'),
+    path('cart/', include("carts.urls")),
     
     # path('accounts/register/parent/', ParentSignUpView.as_view(), name='parent_signup'),
     # path('accounts/register/school/', SchoolSignUpView.as_view(), name='school_signup'),
