@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import EventItem, Vendor 
+from .models import EventItem
 
 class EventItemForm(forms.Form):
     title = forms.CharField()

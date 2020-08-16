@@ -7,7 +7,10 @@ from .models import MenuItem
 
 
 def menu_item_list_view(request):
-    qs = MenuItem.objects.filter(user=request.user)
+    if request.user.is_vendor:
+        qs = MenuItem.objects.filter(user=request.user)
+    elif request.user.is_parent:
+        qs = MenuItem.objects.all()
     template_name = 'menu/item_list.html'
     context = {'object_list': qs}
     return render(request, template_name, context)

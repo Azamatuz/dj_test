@@ -11,7 +11,7 @@ class MenuItemForm(forms.Form):
 class MenuItemModelForm(forms.ModelForm):
     class Meta:
         model = MenuItem
-        fields = ['title', 'price', 'description']
+        fields = ['title', 'price', 'description','category', 'label']
 
     def clean_title(self, *args, **kwargs):
         instance = self.instance

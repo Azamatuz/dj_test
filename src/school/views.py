@@ -40,7 +40,7 @@ def event_item_detail_view(request, slug):
     return render(request, template_name, context)
 
 @login_required
-@user_is_event_author
+#@user_is_event_author
 def event_item_update_view(request, slug):
     obj = get_object_or_404(EventItem, slug=slug)
     form = EventItemModelForm(request.POST or None, instance=obj)
@@ -52,7 +52,7 @@ def event_item_update_view(request, slug):
     return render(request, template_name, context)
 
 @login_required
-@user_is_event_author
+#@user_is_event_author
 def event_item_delete_view(request, slug):
     obj = get_object_or_404(EventItem, slug=slug)
     template_name = 'event/event_delete.html'

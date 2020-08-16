@@ -128,7 +128,7 @@ class User(AbstractBaseUser):
         
     @property
     def is_vendor(self):
-        return self.is_vendor
+        return self.vendor
 
     @property
     def is_active(self):
@@ -141,3 +141,4 @@ class User(AbstractBaseUser):
     @property
     def is_admin(self):
         return self.admin
+

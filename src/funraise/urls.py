@@ -21,12 +21,9 @@ from django.views.generic import TemplateView
 
 from accounts.views import (
   
-    LoginView, RegisterView, 
+    LoginView, 
+    RegisterView, 
     SignUpView,
-    #ParentSignUpView, 
-    #SchoolSignUpView, 
-    #VendorSignUpView,
-
     profile_view,
 )
 
@@ -54,9 +51,6 @@ urlpatterns = [
     path('api/cart/', cart_detail_api_view, name='api-cart'),
     path('cart/', include("carts.urls")),
     
-    # path('accounts/register/parent/', ParentSignUpView.as_view(), name='parent_signup'),
-    # path('accounts/register/school/', SchoolSignUpView.as_view(), name='school_signup'),
-    # path('accounts/register/vendor/', VendorSignUpView.as_view(), name='vendor_signup'),
 
     path('menu-new/', menu_item_create_view),
     path('menu/', include('vendor.urls')),
