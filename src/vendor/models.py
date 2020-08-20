@@ -41,3 +41,9 @@ class MenuItem(models.Model): #menuitem_set -> queryset
     def get_create_url(self):
         return "/menu-new/"
 
+    def get_add_to_cart_url(self):
+        return f'/order/add-to-cart/{self.slug}'
+        
+    def get_remove_from_cart_url(self):
+        return f'/order/remove-from-cart/{self.slug}'
+

@@ -15,7 +15,8 @@
                             <a class="btn btn-primary" href="{{ object.get_edit_url }}" role="button">Edit</a>
                             <a class="btn btn-danger" href="{{ object.get_delete_url }}" role="button">Delete</a>
                         {% elif request.user.is_parent %}
-                            <a class="btn btn-danger" href="{{ object.get_add_to_cart_url }}" role="button">Add to cart</a>
+                            <a class="btn btn-success" href="{{ object.get_add_to_cart_url }}" role="button">Add to cart</a>
+                            <a class="btn btn-danger" href="{{ object.get_remove_from_cart_url }}" role="button">Remove from cart</a>
                         {% endif %}
 
 

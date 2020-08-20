@@ -30,11 +30,23 @@
 <body>
 
   {% if request.user.is_authenticated %}
-    {% include 'short_navbar.html' %} 
-    {% else %}
-      {% include 'main_navbar.html' %}
+  {% include 'short_navbar.html' %}
+  {% else %}
+  {% include 'main_navbar.html' %}
   {% endif %}
-  {% comment %}  {% endcomment %}
+
+  {% if messages %}
+  <div class="alert alert-primary" role="alert">
+      {% for message in messages %}
+        {{ message }}
+      {% endfor %}
+  
+  </div>
+  {% endif %}
+
+
+
+  {% comment %} {% endcomment %}
   <div class="container-fluid">
     <div class="row">
       <div class="col col-md-10 mx-auto">

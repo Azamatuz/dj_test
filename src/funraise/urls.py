@@ -58,4 +58,8 @@ urlpatterns = [
     path('event-new/', event_item_create_view),
     path('event/', include('school.urls')),
 
+    path('order/', include('parent.urls')),
+
+
+
 ]

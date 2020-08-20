@@ -7,6 +7,7 @@ from .views import(
     menu_item_delete_view
 )
 
+app_name = 'vendor'
 urlpatterns = [
 
     path('', menu_item_list_view, name='menulist'),
