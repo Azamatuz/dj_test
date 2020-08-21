@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<h1>{{user}}</h1>
+{% if user.is_parent %}
+   <a class="btn btn-lg rounded-pill float-right mb-5" href=" /children-new/" role="button">Add Child</a>
+{% endif %}
+
+<table class="table text-left">
+   <thead class="thead-light">
+      <tr class='d-flex'>
+         <th class="col-3">Full Name</th>
+         <th class="col-3">School</th>
+         <th class="col-1">Grade</th>
+         <th class="col-3">Teacher</th>
+         <th class="col-1"></th>
+         <th class="col-1"></th>
+
+
+      </tr>
+   </thead>
+   {% for object in object_list %}
+   <tbody>
+      <tr class='d-flex'>
+         <td class="col-3">{{ object.first_name }} {{ object.last_name }} </td>
+         <td class="col-3">{{ object.school }}</td>
+         <td class="col-1">{{ object.grade }}</td>
+         <td class="col-3">{{ object.teacher }}</td>
+         <td class="col-1"><a href="{{ object.get_edit_url }}" role="button">Edit</a></td>
+         <td class="col-1"><a href="{{ object.get_delete_url }}" role="button">Remove</a></td>
+         </tr>
+   </tbody>
+   {% endfor %}
+
+</table>
+
+
+
+
+
+{% endblock content %}

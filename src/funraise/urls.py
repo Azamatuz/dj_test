@@ -29,6 +29,14 @@ from accounts.views import (
 
 from carts.views import cart_detail_api_view
 
+from parent.views import(
+    kid_create_view,
+    kid_detail_view,
+    kid_list_view,
+    kid_update_view,
+    kid_delete_view
+)
+
 from school.views import(
     event_item_create_view,
 )
@@ -51,7 +59,6 @@ urlpatterns = [
     path('api/cart/', cart_detail_api_view, name='api-cart'),
     path('cart/', include("carts.urls")),
     
-
     path('menu-new/', menu_item_create_view),
     path('menu/', include('vendor.urls')),
 
@@ -59,6 +66,12 @@ urlpatterns = [
     path('event/', include('school.urls')),
 
     path('order/', include('parent.urls')),
+
+    path('children-new/', kid_create_view),
+    path('children/', kid_list_view, name='kidlist'),
+    path('children/<str:slug>/', kid_detail_view, name='kid'),
+    path('children/<str:slug>/edit/', kid_update_view),
+    path('children/<str:slug>/delete/', kid_delete_view),
 
 
 
