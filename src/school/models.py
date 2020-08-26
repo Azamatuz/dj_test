@@ -5,7 +5,8 @@ from profiles.models import VendorProfile
 
 User = settings.AUTH_USER_MODEL
 
-class
+class VendorList(models.Model):
+    pass
 class EventItem(models.Model): 
     user = models.ForeignKey(User, default=1, null=True, on_delete=models.SET_NULL)
     title = models.CharField(max_length=120)

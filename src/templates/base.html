@@ -47,15 +47,15 @@
 
 
   {% comment %} {% endcomment %}
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col col-md-10 mx-auto">
-        {% block content %}
-        {% endblock %}
-      </div>
-    </div>
-  </div>
+
+  {% block content %}
+  {% endblock %}
+
+
+
   {% include 'js.html' %}
+  {% block extra_scripts %}
+  {% endblock extra_scripts %}
 </body>
 
 </html>
