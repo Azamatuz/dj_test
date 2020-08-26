@@ -34,7 +34,8 @@ from parent.views import(
     kid_detail_view,
     kid_list_view,
     kid_update_view,
-    kid_delete_view
+    kid_delete_view,
+    OrderSummaryView,
 )
 
 from school.views import(
@@ -66,7 +67,8 @@ urlpatterns = [
     path('event/', include('school.urls')),
 
     path('order/', include('parent.urls')),
-
+    path('order-summary/', OrderSummaryView.as_view(), name='order-summary'),
+    
     path('children-new/', kid_create_view),
     path('children/', kid_list_view, name='kidlist'),
     path('children/<str:slug>/', kid_detail_view, name='kid'),

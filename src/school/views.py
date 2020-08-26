@@ -8,9 +8,12 @@ from .decorators import user_is_event_author
 
 from vendor.models import MenuItem
 
-@login_required
+
 def event_item_list_view(request):
-    qs = EventItem.objects.filter(user=request.user)
+    if request.user.is_school:
+        qs = EventItem.objects.filter(user=request.user)
+    else:
+        qs = EventItem.objects.all()
     template_name = 'event/event_list.html'
     context = {'object_list': qs}
     return render(request, template_name, context)
