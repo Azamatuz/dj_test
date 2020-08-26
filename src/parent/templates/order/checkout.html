@@ -3,11 +3,10 @@
 
 {% block content %}
 
-  <main >
-    <div class="container wow fadeIn">
-      <h2 class="my-5 h2 text-center">Checkout form</h2>
+    <div class="container">
       <div class="row">
         <div class="col-md-8 mb-4">
+          <h2 class="my-5 h2 text-center">Checkout form</h2>
           <div class="card">
             <form method="POST" class="card-body">
               {% csrf_token %}
@@ -150,14 +149,13 @@
 
         </div>
 
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4 mb-4 mt-5 pt-5">
           {% include "order/order_snippet.html" %}
         </div>
 
       </div>
 
     </div>
-  </main>
 
 {% endblock content %}
 

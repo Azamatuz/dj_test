@@ -3,51 +3,62 @@
 {% block content %}
 
 
+<div class="container">
+   <div class="row">
+      <h1>{{user}}</h1>
+      <div class="col-md-12 mb-4">
+         <div class="table-responsive text-nowrap">
+            <h2 class="my-5 h2 text-center">Menu</h2>
+            <table class="table text-left">
+               <thead class="thead-light">
+                  <tr class='d-flex'>
+                     <th class="col-2">Title</th>
+                     <th class="col-2">Price</th>
+                     <th class="col-3">Description</th>
+                     <th class="col-1"></th>
+                     {% if request.user.is_vendor %}
+                     <th class="col-1"></th>
+                     <th class="col-1"></th>
+                     {% else %}
+                     <th class="col-2"></th>
+                     <th class="col-2"></th>
+                     {% endif %}
 
-<h1>{{user}}</h1>
-{% if user.is_vendor %}
-   <a class="btn btn-lg rounded-pill float-right mb-5" href=" /menu-new/" role="button">Add New Menu Item</a>
-{% endif %}
+                  </tr>
+               </thead>
 
-<table class="table text-left">
-   <thead class="thead-light">
-      <tr class='d-flex'>
-         <th class="col-2">Title</th>
-         <th class="col-2">Price</th>
-         <th class="col-3">Description</th>
-         <th class="col-1"></th>
-         {% if request.user.is_vendor %}
-         <th class="col-1"></th>
-         <th class="col-1"></th>
-         {% else %}
-         <th class="col-2"></th>
-         <th class="col-2"></th>
+               <tbody>
+                  {% for object in object_list %}
+                  <tr class='d-flex'>
+                     <td class="col-2">{{ object.title }}</td>
+                     <td class="col-2">${{ object.price }}</td>
+                     <td class="col-3">{{ object.description|linebreaks|truncatewords:10 }}</td>
+                     <td class="col-1"><a class="btn btn-sm rounded-pill float-right px-3"
+                           href="{{ object.get_absolute_url }}" role="button"> Detials </a> </td>
+                     {% if request.user.is_vendor %}
+                     <td class="col-1"><a class="btn btn-sm rounded-pill float-right px-3"
+                           href="{{ object.get_edit_url }}" role="button">Edit</i></a></td>
+                     <td class="col-1"> <a class="btn btn-sm rounded-pill float-right px-3"
+                           href="{{ object.get_delete_url }}" role="button">Delete</a></td>
+                     {% else %}
+                     <td class="col-2"><a class="btn btn-sm rounded-pill float-right px-3"
+                           href="{{ object.get_add_to_cart_url }}" role="button">Add to cart</a></td>
+                     <td class="col-2"><a class="btn btn-sm rounded-pill float-right px-3"
+                           href="{{ object.get_remove_from_cart_url }}" role="button">Remove from cart</i></a></td>
+                     {% endif %}
+                  </tr>
+                  {% endfor %}
+               </tbody>
+
+
+            </table>
+         </div>
+         {% if user.is_vendor %}
+         <a class="btn btn-lg rounded-pill float-right mb-5 px-3" href="/children-new/" role="button">Add Menu Item</a>
          {% endif %}
-
-      </tr>
-   </thead>
-   {% for object in object_list %}
-   <tbody>
-      <tr class='d-flex'>
-         <td class="col-2">{{ object.title }}</td>
-         <td class="col-2">${{ object.price }}</td>
-         <td class="col-3">{{ object.description|linebreaks|truncatewords:10 }}</td>
-         <td class="col-1"><a  href="{{ object.get_absolute_url }}" role="button">Detials</a> </td>
-         {% if request.user.is_vendor %}
-         <td class="col-1"><a href="{{ object.get_edit_url }}" role="button">Edit</a></td>
-         <td class="col-1"> <a href="{{ object.get_delete_url }}" role="button">Delete</a></td>
-         {% else %}
-         <td class="col-2"><a href="{{ object.get_add_to_cart_url }}" role="button">Add to cart</a></td>
-         <td class="col-2"><a href="{{ object.get_remove_from_cart_url }}" role="button">Remove from cart</a></td>
-         {% endif %}
-
-         
-      </tr>
-   </tbody>
-   {% endfor %}
-
-</table>
-
+      </div>
+   </div>
+</div>
 
 
 
