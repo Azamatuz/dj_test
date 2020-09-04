@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<div class="row">
+
+    <h1>{{user}}</h1>
+    <div class="col-md-12 mb-4">
+        <div class="table-responsive text-nowrap">
+            <h2 class="my-5 h2 text-center">Favorit Vendors</h2>
+            <table class="table text-left">
+                <thead class="thead-light">
+                    <tr class='d-flex'>
+                        <th class="col-1">#</th>
+                        <th class="col-3">Title</th>
+                        <th class="col-2">Logo</th>
+                        <th class="col-2">email</th>
+                        <th class="col-2">Contact Name</th>
+                        <th class="col-2"></th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for vendor in vendors %}
+                    <tr class='d-flex'>
+                        <td class="col-1">{{ forloop.counter  }}</td>
+                        <td class="col-3">{{ vendor.email }}</td>
+                        <td class="col-2">{{ vendor.email }}</td>
+                        <td class="col-2">{{ vendor.email }}</td>
+                        <td class="col-2">{{ vendor.email }} </td>
+                        <td class="col-2"><a class="btn btn-sm rounded-pill float-right px-3"
+                                href="{% url 'school:change_vendor_list' operation='remove' pk=vendor.pk %}"
+                                role="button">Remove Vendor</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+   <div class="col-md-12 mb-4">
+        <div class="table-responsive text-nowrap">
+            <h2 class="my-5 h2 text-center">Available Vendors</h2>
+            <table class="table text-left">
+                <thead class="thead-light">
+                    <tr class='d-flex'>
+                        <th class="col-1">#</th>
+                        <th class="col-3">Title</th>
+                        <th class="col-2">Logo</th>
+                        <th class="col-2">email</th>
+                        <th class="col-2">Contact Name</th>
+                        <th class="col-2"></th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr class='d-flex'>
+                        {% if not user in vendors %}
+                        <td class="col-1">{{ forloop.counter  }}</td>
+                        <td class="col-3">{{ user.email }}</td>
+                        <td class="col-2">{{ user.email }}</td>
+                        <td class="col-2">{{ user.email }}</td>
+                        <td class="col-2">{{ user.email }} </td>
+                        <td class="col-2">
+
+                        <a class="btn btn-sm rounded-pill float-right px-3"
+                            href="{% url 'school:change_vendor_list' operation='add' pk=user.pk %}"
+                            role="button">Add Vendor</a>
+                        {% endif %} 
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}

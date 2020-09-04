@@ -9,7 +9,7 @@ from .models import MenuItem
 def menu_item_list_view(request):
     if request.user.is_vendor:
         qs = MenuItem.objects.filter(user=request.user)
-    elif request.user.is_parent:
+    else:
         qs = MenuItem.objects.all()
     template_name = 'menu/item_list.html'
     context = {'object_list': qs}
@@ -20,7 +20,6 @@ def menu_item_list_view(request):
 def menu_item_create_view(request):
     form = MenuItemModelForm(request.POST or None)
     if form.is_valid():
-        print(form.cleaned_data)
         obj = form.save(commit=False)
         obj.user = request.user
         obj.slug = str(obj.user) + '_' + form.cleaned_data.get('title') 
