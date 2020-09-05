@@ -4,7 +4,6 @@ from django.contrib.auth.models import (
 )
 
 
-
 class UserManager(BaseUserManager):
     def create_user(self, email,  parent, school, vendor,password=None, is_staff=False, is_admin=False, is_active=True, is_parent=False, is_school=False, is_vendor=False):
         if not email:
@@ -77,17 +76,13 @@ class UserManager(BaseUserManager):
 
     def create_superuser(self, email, parent, school, vendor,  password=None):
         user = self.create_user(
-                email,
-                
+                email,              
                 parent,
                 school,
                 vendor,
                 password=password,
                 is_admin=True,
                 is_staff=True
-                
-
-
         )
 
         return user

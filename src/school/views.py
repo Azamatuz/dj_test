@@ -11,7 +11,7 @@ from vendor.models import MenuItem
 def event_item_list_view(request):
     if request.user.is_school:
         qs = EventItem.objects.filter(user=request.user)
-    elif request.user.is_parent:
+    else:
         qs = EventItem.objects.all()
     template_name = 'event/event_list.html'
     context = {'object_list': qs}

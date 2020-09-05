@@ -23,7 +23,6 @@ from accounts.views import (
   
     LoginView, 
     RegisterView, 
-    SignUpView,
     profile_view,
 )
 

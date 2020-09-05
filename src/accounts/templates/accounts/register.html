@@ -1,28 +1,55 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-  {% if request.user.is_authenticated %}
+{% if request.user.is_authenticated %}
 
-  <h2>You are already registered. <a href="{% url 'logout' %}">Log out</a> to create new user.</h2>
-  {% else %}
-      <h2>Sign up</h2>
-    <form method="post">
-      {% csrf_token %}
-      {% for field in form %}
-        <p>
-          {{ field.label_tag }}<br>
-          {{ field }}
-          {% if field.help_text %}
-            <small style="color: grey">{{ field.help_text }}</small>
-          {% endif %}
-          {% for error in field.errors %}
-            <p style="color: red">{{ error }}</p>
-          {% endfor %}
-        </p>
-      {% endfor %}
-      <button type="submit">Sign up</button>
-    </form>
+<h2>You are already registered. <a href="{% url 'logout' %}">Log out</a> to create new user.</h2>
+{% else %}
+
+<div class="container ">
+  <div class="row">
+    <div class="col-md-8 mb-4 mx-auto">
+      <h2 class="my-5 text-center">Sign up</h2>
+      <div class="card">
+        <form method="POST" class="card-body bg-light">
+          {% csrf_token %}
+          <div class="row bg-light">
+            <div class="col-6">
+              <div class="form-row">
+                <div class="group-form">
+                  <div class="col-md-12">
+
+                    {{ form.email|as_crispy_field }}
+                    {{ form.password1|as_crispy_field }}
+                    {{ form.password2|as_crispy_field }}
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 bg-light">
+              <div class="form-row">
+                <div class="group-form">
+                  <h4>Please, select your role.</h4>
+                  <div class="my-2">
+                    {{ form.parent|as_crispy_field }}
+                    {{ form.school|as_crispy_field }}
+                    {{ form.vendor|as_crispy_field }}
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <button class="col-4 mx-auto px-4 btn btn-light rounded-pill" type="submit">Sign up</button>
+        </form>
+       
+      </div>
+    </div>
+  </div>
+ 
 
   {% endif %}
-  
-{% endblock %}
+
+  {% endblock %}

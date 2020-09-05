@@ -26,21 +26,8 @@ class LoginView(FormView):
         email  = form.cleaned_data.get("email")
         password  = form.cleaned_data.get("password")
         user = authenticate(request, username=email, password=password)
-        # if user is not None:
-        #     login(request, user)
-        #     try:
-        #         del request.session['guest_email_id']
-        #     except:
-        #         pass
-        #     if is_safe_url(redirect_path, request.get_host()):
-        #         return redirect(redirect_path)
-        #     else:
-        #         return redirect("/")
+
         return super(LoginView, self).form_invalid(form)
-
-
-class SignUpView(TemplateView):
-    template_name = 'registration/signup.html'
 
 
 def home(request):
@@ -53,24 +40,6 @@ def home(request):
             return redirect('vendor:vendor_home')
     return render(request, '/home.html')
 
-
-# class ParentSignUpView(CreateView):
-#     model = User
-#     form_class = ParentSignUpForm
-#     template_name = 'registration/signup_form.html'
-#     success_url = 'accounts/login/'
-
-# class SchoolSignUpView(CreateView):
-#     model = User
-#     form_class = SchoolSignUpForm
-#     template_name = 'registration/signup_form.html' 
-#     success_url = '/login/'
-
-# class VendorSignUpView(CreateView):
-#     model = User
-#     form_class = VendorSignUpForm
-#     template_name = 'registration/signup_form.html'
-#     success_url = '/login/'
 
 class RegisterView(CreateView):
     form_class = RegisterForm

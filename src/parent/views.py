@@ -328,7 +328,7 @@ def remove_item_from_cart(request, slug): #remove single item from the cart
 def kid_list_view(request):
     if request.user.is_parent:
         qs = Kid.objects.filter(user=request.user)
-    elif request.user.is_school:
+    else:
         qs = Kid.objects.all()
     template_name = 'children/kid_list.html'
     context = {'object_list': qs}
