@@ -31,11 +31,27 @@
             <div class="col-6 bg-light">
               <div class="form-row">
                 <div class="group-form">
-                  <h4>Please, select your role.</h4>
+                  {% comment %} <h4>Please, select your role.</h4>
                   <div class="my-2">
                     {{ form.parent|as_crispy_field }}
                     {{ form.school|as_crispy_field }}
                     {{ form.vendor|as_crispy_field }}
+                  </div> {% endcomment %}
+                  <div>
+                    <div class="controls ">
+                      <label class="radio-inline">
+                        <input type="radio" checked="checked" name="role_select" id="id_is_parent"
+                          value="parent">I am a Parent</label>
+                      <label class="radio-inline">
+                        <input type="radio" name="role_select" id="id_is_school"
+                          value="school">I am a School Admin</label>
+                      <label class="radio-inline">
+                        <input type="radio" name="role_select" id="id_is_vendor"
+                          value="vendor">I am a Vendor</label>                         
+                    </div>
+                    <div>
+                    {{ form.role_select|as_crispy_field }}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -44,11 +60,11 @@
           </div>
           <button class="col-4 mx-auto px-4 btn btn-light rounded-pill" type="submit">Sign up</button>
         </form>
-       
+
       </div>
     </div>
   </div>
- 
+
 
   {% endif %}
 

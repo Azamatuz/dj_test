@@ -65,9 +65,22 @@ class RegisterForm(forms.ModelForm):
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
 
+    parent = forms.BooleanField(label="I am a Parent")
+    school = forms.BooleanField(label="I am a School Admin")
+    vendor = forms.BooleanField(label="I am a Vendor")
+
+    role_select=forms.ChoiceField(
+                    widget=forms.RadioSelect,
+                    label="Select your role.",
+                    choices=(('is_parent','parent '),('is_school','school'),('is_vendor','vendor')),
+                    )
+
+    if not parent and not school and not vendor:
+        raise forms.ValidationError("Users must have a role")
+
     class Meta:
         model = User
-        fields = ['parent', 'school', 'vendor', 'email'] #'full_name',)
+        fields = ['role_select', 'parent', 'school', 'vendor', 'email'] #'full_name',)
 
 
     def clean_password2(self):
@@ -82,6 +95,7 @@ class RegisterForm(forms.ModelForm):
         # Save the provided password in hashed format
         user = super(RegisterForm, self).save(commit=False)
         user.set_password(self.cleaned_data["password1"])
+        user.role_select( self.cleaned_data['role_select'])
         # user.active = False # send confirmation email
         if commit:
             user.save()
